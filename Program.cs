@@ -8,9 +8,7 @@ nokia.Ligar();
 nokia.InstalarAplicativo("Whatsapp");
 Console.WriteLine("");
 
-await Chamada(async () => { nokia.ReceberLigacao(); await Task.CompletedTask; });
-
-
+await Chamada(async () => { nokia.ReceberLigacao(); await Task.CompletedTask; }, 3000);
 
 
 Console.WriteLine("");
@@ -23,20 +21,12 @@ iphone.Ligar();
 iphone.InstalarAplicativo("Whatsapp");
 Console.WriteLine("");
 
-await Chamada(async () => { iphone.ReceberLigacao(); await Task.CompletedTask; });
+await Chamada(async () => { iphone.ReceberLigacao(); await Task.CompletedTask; }, 3000);
 
 
 
-
-
-
-
-
-
-
-
-static async Task Chamada(Func<Task> metodo)
+static async Task Chamada(Func<Task> metodo, int time)
 {
-    await Task.Delay(3000);
+    await Task.Delay(time);
     await metodo();
 }
